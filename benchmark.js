@@ -35,6 +35,23 @@ const tcases = [
         },
         run: (x, callback) => x.get(callback),
     },
+    {
+        name: 'WatchBeam/limitus',
+        setup: limit => {
+            const limitus = new (require('limitus'))();
+            limitus.extend({
+                set(key, value, expiration, callback) {
+                    redis.setex(key, value, Math.ceil(expiration / 1000), callback);
+                },
+                get(key, callback) {
+                    redis.get(key, callback);
+                },
+            });
+            limitus.rule('foo', { max: limit, interval: 60000 });
+            return limitus;
+        },
+        run: (x, callback) => x.drop('foo', { key: 'asdf' }, callback),
+    },
 ];
 
 set('mintime', 3000);

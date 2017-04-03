@@ -49,6 +49,9 @@ Limitur is the fastest Redis rate limiting solution for Node that I'm aware of. 
           14,494 op/s » under limit: tj/ratelimiter
           14,576 op/s » over limit: tj/ratelimiter
 
+          13,475 op/s » under limit: WatchBeam/limitus
+          13,627 op/s » over limit: WatchBeam/limitus
+
   Suites:  0
   Benches: 6
   Elapsed: 29,479.43 ms
