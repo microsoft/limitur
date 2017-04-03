@@ -151,13 +151,18 @@ Object.keys(clients).forEach(name => {
         });
 
         it('sets ttls correctly', () => {
-            const reset = Date.now() + rule.interval;
             const wiggleRoom = 5000;
+
             return runTimes(1).then(([res]) => {
+                const reset = Date.now() + rule.interval;
                 expect(res.resetsAt.getTime()).to.be.within(reset - wiggleRoom, reset);
                 return (<any> baseClient).pttl(rule.getKeyFor(42));
             }).then(ttl => {
                 expect(ttl).to.be.within(rule.interval - wiggleRoom, rule.interval);
+                return new Promise(r => setTimeout(r, 100))
+                    .then(() => runTimes(1))
+                    .then(() => (<any> baseClient).pttl(rule.getKeyFor(42)))
+                    .then(nextTTL => expect(nextTTL).to.be.lessThan(ttl - 99));
             });
         });
     });
