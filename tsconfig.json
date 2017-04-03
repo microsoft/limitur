@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+        "declaration": true,
+        "target": "es5",
+        "outDir": "dist",
+        "lib": ["es6"]
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

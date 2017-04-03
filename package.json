@@ -1,0 +1,51 @@
+{
+  "name": "limitur",
+  "version": "0.1.0",
+  "description": "Super fast Redis-backed rate limiter. Batteries included.",
+  "main": "dist/limitur.js",
+  "typings": "dist/limitur.d.ts",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register \"src/*.test.ts\"",
+    "bench": "npm run build && matcha benchmark.js",
+    "build": "npm-run-all -s build:ts build:lua ",
+    "build:ts": "tsc",
+    "build:lua": "luamin -f src/incrpx.lua > dist/incrpx.lua",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WatchBeam/limitur.git"
+  },
+  "keywords": [
+    "redis",
+    "rate",
+    "limit",
+    "rate-limit"
+  ],
+  "author": "Connor Peet <connor@peet.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WatchBeam/limitur/issues"
+  },
+  "homepage": "https://github.com/WatchBeam/limitur#readme",
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/ioredis": "0.0.22",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/redis": "^0.12.36",
+    "@types/sinon": "^2.1.1",
+    "chai": "^3.5.0",
+    "ioredis": "^2.5.0",
+    "luamin": "^1.0.4",
+    "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
+    "redis": "^2.7.1",
+    "sinon": "^2.1.0",
+    "ts-node": "^3.0.2",
+    "typescript": "^2.2.2"
+  },
+  "dependencies": {
+    "imurmurhash": "^0.1.4"
+  }
+}
