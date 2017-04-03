@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 
-const script = readFileSync('./incrpx.min.lua', 'utf8');
+const script = readFileSync(`${__dirname}/incrpx.lua`, 'utf8');
 const murmur = require('imurmurhash');
 
 /**

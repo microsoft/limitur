@@ -58,7 +58,4 @@ typings/
 # dotenv environment variables file
 .env
 
-/test.js
-/index.js
-/index.d.ts
-/incrpx.min.lua
+/dist

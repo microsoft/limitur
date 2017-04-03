@@ -2,15 +2,15 @@
   "name": "limitur",
   "version": "0.1.0",
   "description": "Super fast Redis-backed rate limiter. Batteries included.",
-  "main": "index.js",
+  "main": "dist/limitur.js",
+  "typings": "dist/limitur.d.ts",
   "scripts": {
-    "test": "npm run build:lua && mocha --compilers ts:ts-node/register test.ts",
-    "bench": "npm run build && matcha benchmark/benchmark.js",
-    "clean": "rm -f index.js index.d.ts test.js incrpx.min.lua",
-    "build": "npm-run-all --parallel -s build:ts build:lua ",
+    "test": "mocha --compilers ts:ts-node/register \"src/*.test.ts\"",
+    "bench": "npm run build && matcha benchmark.js",
+    "build": "npm-run-all -s build:ts build:lua ",
     "build:ts": "tsc",
-    "build:lua": "luamin -f incrpx.lua > incrpx.min.lua",
-    "prepublish": "npm run build:ts && npm run build:lua"
+    "build:lua": "luamin -f src/incrpx.lua > dist/incrpx.lua",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

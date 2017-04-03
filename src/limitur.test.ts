@@ -3,7 +3,7 @@ import * as NRedis from 'redis';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 
-import * as Limitur from './';
+import * as Limitur from './limitur';
 
 const baseClient = new IORedis();
 const clients: { [name: string]: Limitur.IRedisClient } = {

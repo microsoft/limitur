@@ -7,10 +7,13 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "strictNullChecks": true,
+        "declaration": true,
         "target": "es5",
+        "outDir": "dist",
         "lib": ["es6"]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ]
 }
